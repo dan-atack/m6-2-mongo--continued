@@ -38,8 +38,10 @@ const initialState = {
 
 function reducer(state, action) {
   if (action.type === 'ADD_KETCHUP') {
-    state.burgerToppings.push('ketchup');
-    return state;
+    return {
+      ...state,
+      burgerToppings: [...state.burgerToppings, action.topping],
+    };
   }
 }
 ```
@@ -71,6 +73,7 @@ const initialState = {
 function reducer(state, action) {
   if (action.type === 'REMOVE_RACER_FROM_TEAM') {
     const { teamId, racerName } = action;
+    const stateCopy
 
     delete state.competitors[teamId].racers[racerName];
 
